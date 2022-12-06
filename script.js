@@ -3,6 +3,7 @@ let lastWord = "";
 let answered = false
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log(getPattern("away"))
     jQuery.get('https://raw.githubusercontent.com/Ansere/Word-Pattern-Practice/main/words.txt', function(data) {
         let wordArr = data.toLowerCase().split("\n")
         wordArr.forEach(function(word) {
@@ -77,11 +78,6 @@ function getPattern(word){
             continue
         }
         let letter = letters.pop()
-        while (letter.toLowerCase() === word.substring(i, i + 1)) {
-            letters.push(letter)
-            letters = letters.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
-            letter = letters.pop()
-        }
         for (let j = i; j < cipher.length; j++) {
             if (word.substring(j, j + 1) === word.substring(i, i+1)) {
                 cipher[j] = letter

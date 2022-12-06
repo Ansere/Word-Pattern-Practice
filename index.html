@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,300,700' rel='stylesheet' type='text/css'>
     <style>
         html, body {
             height: 100%;
         }
+        body {
+            font-family: 'Inconsolata', sans-serif !important;
+        }
     </style>
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="d-flex justify-content-md-center align-items-center vh-100">
         <div>
-            <p id = "ciphertext">Word</p>
-            <button onclick="nextWord()"></button>
+            <strong class = "text-center d-flex justify-content-md-center">Guess the word from the word pattern!</strong> 
+            <p class = "text-center" id = "ciphertext"></p>
+            <div class="d-flex justify-content-md-center">
+                <input id = "input" class = "justify-content-md-center">
+                <button onclick="nextWord()" >Next Word!</button>
+            </div>
+            <div style = "height: 20px;"> 
+                <p id = "answer_label" class = "text-center" style = "margin-top: 15px;"> </p>  
+            </div>
         </div>
     </div>
 </body>

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 'text');
     $("input").on('keyup', function (e) {
         if ((e.key === 'Enter' || e.keyCode === 13) && !answered) {
-            document.getElementById("answer_label").innerText = ((lastWord.includes(document.getElementById("input").value.toLowerCase())) ? "You got it right!!!! The word was "  : "You're dumb LOL. WRONG, the word was ") + lastWord.join(", ")
+            document.getElementById("answer_label").innerText = ((lastWord.includes(document.getElementById("input").value.toLowerCase())) ? "Correct! The word was "  : "Incorrect, the word was ") + lastWord.join(", ")
             document.getElementById("input").value = ""
             nextWord()
         }
@@ -38,7 +38,7 @@ function nextWord(){
         word = words.get(key);
     }
     lastWord = word
-    ciphertext.innerText = getPattern(word[0])
+    ciphertext.innerText = encrypt(word[0])
 }
 
 function encrypt(word){
@@ -48,7 +48,7 @@ function encrypt(word){
         cipher[i] = ""
     }
     for (let i = 0; i < cipher.length; i++){
-        if (!"abcdefghijklmnopqrstuvxyz".includes(word.substring(i, i + 1)) || cipher[i] !== "") {
+        if (!"abcdefghijklmnopqrstuvwxyz".includes(word.substring(i, i + 1)) || cipher[i] !== "") {
             continue
         }
         let letter = letters.pop()
@@ -73,7 +73,7 @@ function getPattern(word){
         cipher[i] = ""
     }
     for (let i = 0; i < cipher.length; i++){
-        if (!"abcdefghijklmnopqrstuvxyz".includes(word.substring(i, i + 1)) || cipher[i] !== "") {
+        if (!"abcdefghijklmnopqrstuvwxyz".includes(word.substring(i, i + 1)) || cipher[i] !== "") {
             continue
         }
         let letter = letters.pop()

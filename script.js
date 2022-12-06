@@ -3,7 +3,7 @@ let lastWord = "";
 let answered = false
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(getPattern("away"))
+    console.log(getPattern("to the"))
     jQuery.get('https://raw.githubusercontent.com/Ansere/Word-Pattern-Practice/main/words.txt', function(data) {
         let wordArr = data.toLowerCase().split("\n")
         wordArr.forEach(function(word) {
@@ -49,7 +49,11 @@ function encrypt(word){
         cipher[i] = ""
     }
     for (let i = 0; i < cipher.length; i++){
-        if (!"abcdefghijklmnopqrstuvwxyz".includes(word.substring(i, i + 1)) || cipher[i] !== "") {
+        if (cipher[i] !== "") {
+            continue
+        }
+        if (!"abcdefghijklmnopqrstuvwxyz".includes(word.substring(i, i + 1))) {
+            cipher[i] = word.substring(i, i+1)
             continue
         }
         let letter = letters.pop()
@@ -74,9 +78,13 @@ function getPattern(word){
         cipher[i] = ""
     }
     for (let i = 0; i < cipher.length; i++){
-        if (!"abcdefghijklmnopqrstuvwxyz".includes(word.substring(i, i + 1)) || cipher[i] !== "") {
+        if (cipher[i] !== "") {
             continue
         }
+        if (!"abcdefghijklmnopqrstuvwxyz".includes(word.substring(i, i + 1))) {
+            cipher[i] = word.substring(i, i+1)
+            continue
+        }   
         let letter = letters.pop()
         for (let j = i; j < cipher.length; j++) {
             if (word.substring(j, j + 1) === word.substring(i, i+1)) {

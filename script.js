@@ -52,7 +52,7 @@ function encrypt(word){
             continue
         }
         let letter = letters.pop()
-        while (letter.toLowerCase === word.substring(i, i + 1)) {
+        while (letter.toLowerCase() === word.substring(i, i + 1)) {
             letters.push(letter)
             letters = letters.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
             letter = letters.pop()
@@ -77,7 +77,7 @@ function getPattern(word){
             continue
         }
         let letter = letters.pop()
-        while (letter.toLowerCase === word.substring(i, i + 1)) {
+        while (letter.toLowerCase() === word.substring(i, i + 1)) {
             letters.push(letter)
             letters = letters.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
             letter = letters.pop()

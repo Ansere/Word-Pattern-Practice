@@ -32,6 +32,7 @@ function nextWord(){
     let keys = Array.from(words.keys()).map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
     let key = keys.pop()
     let word = words.get(key);
+    console.log(words)
     while (lastWord === word) {
         key = keys.pop()
         word = words.get(key);
